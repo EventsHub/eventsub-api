@@ -16,8 +16,8 @@ import { validarAtualizacaoUsuario } from '../middleware/validarAtualizacaoUsuar
 
 const router = Router();
 
-router.post('/cadastro', validar(cadastroUsuarioSchema), cadastrarUsuario);
-router.post('/login', validar(loginUsuarioSchema), loginUsuario);
+router.post('/login', validar(loginUsuarioSchema) as any, loginUsuario);
+router.post('/cadastro', validar(cadastroUsuarioSchema) as any, cadastrarUsuario);
 
 router.get('/perfil', autenticarJWT, getPerfilUsuario);
 router.patch('/perfil', autenticarJWT, validarAtualizacaoUsuario, atualizarUsuario);

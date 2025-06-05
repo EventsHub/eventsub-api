@@ -7,7 +7,7 @@ import { pedidoSchema } from '../validation/pedido.validation';
 
 const router = Router();
 
-router.post('/', autenticarJWT, validar(pedidoSchema), criarPedido);
+router.post('/', autenticarJWT, validar(pedidoSchema) as any, criarPedido);
 router.get('/', autenticarJWT, listarPedidosDoUsuario);
 router.patch('/cancelar/:id_pedido', autenticarJWT, cancelarPedido);
 
