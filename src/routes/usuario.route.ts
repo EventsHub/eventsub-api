@@ -6,7 +6,7 @@ import {
   atualizarUsuario,
 } from '../controllers/usuario.controller';
 
-import { autenticarJWT2 } from '../middleware/auth2.middleware';
+import { autenticarJWT } from '../middleware/auth.middleware';
 import { validar } from '../middleware/validacao.middleware';
 import {
   cadastroUsuarioSchema,
@@ -19,7 +19,7 @@ const router = Router();
 router.post('/cadastro', validar(cadastroUsuarioSchema), cadastrarUsuario);
 router.post('/login', validar(loginUsuarioSchema), loginUsuario);
 
-router.get('/perfil', autenticarJWT2, getPerfilUsuario);
-router.patch('/perfil', autenticarJWT2, validarAtualizacaoUsuario, atualizarUsuario);
+router.get('/perfil', autenticarJWT, getPerfilUsuario);
+router.patch('/perfil', autenticarJWT, validarAtualizacaoUsuario, atualizarUsuario);
 
 export default router;

@@ -1,8 +1,9 @@
-import { Request, Response } from 'express';
-import { AppDataSource } from '../config/data-source';
-import { Usuario } from '../entities/usuario.entity';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import { Request, Response } from 'express';
+
+import { AppDataSource } from '../config/data-source';
+import { Usuario } from '../entities/usuario.entity';
 
 const usuarioRepository = AppDataSource.getRepository(Usuario);
 

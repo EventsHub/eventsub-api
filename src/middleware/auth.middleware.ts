@@ -1,12 +1,15 @@
-import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
+import { Request, Response, NextFunction } from 'express';
+
+import { Usuario } from '../entities/usuario.entity';
+import { AppDataSource } from '../config/data-source';
 
 interface JwtPayload {
   id: number;
   email: string;
 }
 
-export const autenticarJWT = (req: Request, res: Response, next: NextFunction): void => {
+export const autenticarJWT = async (req: Request, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -20,11 +23,20 @@ export const autenticarJWT = (req: Request, res: Response, next: NextFunction): 
     const segredo = process.env.JWT_SECRET || 'segredo';
     const payload = jwt.verify(token, segredo) as JwtPayload;
 
-    (req as any).user = {
-      id: payload.id,
-      email: payload.email,
-    };
+    console.log(segredo);
+    console.log(payload.id);
 
+    const userRepository = AppDataSource.getRepository(Usuario);
+    const usuario = await userRepository.findOne({
+      where: {id_usuario: payload.id as number },
+      relations:['produto']
+  })
+
+    if(!usuario) {
+      throw new Error("Usuario não existe")
+    }
+
+    req.usuario = usuario;
     
     next();
   } catch (error) {

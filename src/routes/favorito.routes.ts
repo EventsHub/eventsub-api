@@ -4,12 +4,12 @@ import {
   removerFavorito,
   listarFavoritos,
 } from '../controllers/favorito.controller';
-import { autenticarJWT2 } from '../middleware/auth2.middleware';
+import { autenticarJWT } from '../middleware/auth.middleware';
 
 const router = Router();
 
-router.post('/:id_produto', autenticarJWT2, adicionarFavorito);
-router.delete('/:id_produto', autenticarJWT2, removerFavorito);
-router.get('/', autenticarJWT2, listarFavoritos);
+router.post('/:id_produto', autenticarJWT, adicionarFavorito);
+router.delete('/:id_produto', autenticarJWT, removerFavorito);
+router.get('/', autenticarJWT, listarFavoritos);
 
 export default router;

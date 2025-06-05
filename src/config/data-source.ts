@@ -15,21 +15,7 @@ export const AppDataSource = new DataSource({
   database: process.env.DB_NAME,    // Nome do banco de dados
   synchronize: true,                // Sincronizar o banco de dados (ideal para desenvolvimento)
   logging: false,                   // Desativar logs no console
-  entities: [
-    // Aqui você vai importar e adicionar todas as suas entidades (models)
-    require("../entities/usuario.entity").Usuario,
-    require("../entities/fornecedor.entity").Fornecedor,
-    require("../entities/produto.entity").Produto,
-    require("../entities/servico.entity").Servico,
-    require("../entities/categoria.entity").Categoria,
-    require("../entities/servicoCategoria.entity").ServicoCategoria,
-    require("../entities/produtoCategoria.entity").ProdutoCategoria,
-    require("../entities/pedido.entity").Pedido,
-    require("../entities/itemPedido.entity").ItemPedido,
-    require("../entities/pagamento.entity").Pagamento,
-    require("../entities/avaliacao.entity").Avaliacao,
-    require("../entities/favorito.entity").Favorito
-  ],
+  entities: [__dirname + '/../entities/*.entity.{js,ts}'],
   migrations: [],  // Migrations, caso você precise
   subscribers: [],
   extra: {
