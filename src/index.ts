@@ -1,6 +1,5 @@
 import "reflect-metadata";
 import * as dotenv from 'dotenv';
-
 import server from "./http";
 import ping from "./utils/ping.util";
 import { seedCategorias } from "./seeds/categoria.seed";

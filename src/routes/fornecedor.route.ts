@@ -6,6 +6,6 @@ import { fornecedorSchema } from "../validation/fornecedor.validation";
 
 const router = Router();
 
-router.post("/tornar-fornecedor", autenticarJWT, validar(fornecedorSchema), tornarFornecedor);
+router.post("/tornar-fornecedor", autenticarJWT, validar(fornecedorSchema) as any, tornarFornecedor as any);
 
 export default router;
