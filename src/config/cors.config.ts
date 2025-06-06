@@ -4,7 +4,8 @@ import { CorsOptions } from "cors";
 config();
 
 const origin = process.env.MODE === "homolog" ? true : [
-    "https://www.eventshub.com.br",
+    'eventsub.vercel.app',
+    'eventsub-leoohhs-projects.vercel.app',
 ];
 
 export default {
