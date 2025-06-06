@@ -9,6 +9,7 @@ import { In,Like } from 'typeorm';
 export const criarProduto = async (req: Request, res: Response): Promise<void> => {
   const { usuario } = req;
   const { nome, descricao, preco, imagens, categorias } = req.body;
+
   const usuarioId = usuario.id_usuario;
 
     if (!categorias || !Array.isArray(categorias) || categorias.length === 0) {

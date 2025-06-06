@@ -19,7 +19,7 @@ const router = Router();
 router.post('/login', validar(loginUsuarioSchema) as any, loginUsuario);
 router.post('/cadastro', validar(cadastroUsuarioSchema) as any, cadastrarUsuario);
 
-router.get('/perfil', autenticarJWT, getPerfilUsuario);
+router.post('/perfil', autenticarJWT, getPerfilUsuario);
 router.patch('/perfil', autenticarJWT, validarAtualizacaoUsuario, atualizarUsuario);
 
 export default router;

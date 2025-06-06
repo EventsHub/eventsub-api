@@ -67,7 +67,7 @@ export const getPerfilUsuario = async (req: Request, res: Response): Promise<voi
 
     const { senha, ...usuarioSemSenha } = usuario;
 
-    res.json(usuarioSemSenha);
+    res.status(200).json({usuario: usuarioSemSenha});
   } catch (error) {
     res.status(500).json({ message: 'Erro ao buscar perfil.', error });
   }
